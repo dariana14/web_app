@@ -7,6 +7,8 @@ public interface IAppBLL : IBLL
 {
     IAdvertisementService Advertisements { get; }
     
+    IRatingService Ratings { get; }
+    
     ILocationService Locations { get; }
     
     IPriceService Prices { get; }

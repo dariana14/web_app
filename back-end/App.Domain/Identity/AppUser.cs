@@ -15,5 +15,8 @@ public class AppUser : IdentityUser<Guid>, IDomainEntityId
     public string LastName { get; set; } = default!;
     
     public ICollection<Advertisement>? Advertisements { get; set; }
+    
+    public ICollection<Rating>? Ratings { get; set; }
+
     public ICollection<AppRefreshToken>? RefreshTokens { get; set; }
 }

@@ -8,6 +8,7 @@ public interface IAppUnitOfWork : IUnitOfWork
 {
     IAdvertisementRepository Advertisements { get; }
     
+    IRatingRepository Ratings { get; }
     ILocationRepository Locations { get; }
     
     IPriceRepository Prices { get; }

@@ -19,6 +19,9 @@ public class AppUOW : BaseUnitOfWork<AppDbContext>, IAppUnitOfWork
     private ILocationRepository? _locations;
     public ILocationRepository Locations => _locations ?? new LocationRepository(UowDbContext, _mapper);
     
+    private IRatingRepository? _ratings;
+    public IRatingRepository Ratings => _ratings ?? new RatingRepository(UowDbContext, _mapper);
+    
     private IAdvertisementRepository? _advertisements;
     public IAdvertisementRepository Advertisements => _advertisements ?? new AdvertisementRepository(UowDbContext, _mapper);
     private IPriceRepository? _prices { get; }

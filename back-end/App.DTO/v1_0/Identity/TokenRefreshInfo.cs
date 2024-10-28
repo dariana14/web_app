@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace App.DTO.v1_0.Identity;
 
 public class TokenRefreshInfo

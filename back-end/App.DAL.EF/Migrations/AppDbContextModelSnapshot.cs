@@ -273,6 +273,30 @@ namespace App.DAL.EF.Migrations
                     b.ToTable("Prices");
                 });
 
+            modelBuilder.Entity("App.Domain.Rating", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("AdvertisementId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("AppUserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("RatingValue")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdvertisementId");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Ratings");
+                });
+
             modelBuilder.Entity("App.Domain.Service", b =>
                 {
                     b.Property<Guid>("Id")
@@ -486,6 +510,25 @@ namespace App.DAL.EF.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("App.Domain.Rating", b =>
+                {
+                    b.HasOne("App.Domain.Advertisement", "Advertisement")
+                        .WithMany("Ratings")
+                        .HasForeignKey("AdvertisementId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("App.Domain.Identity.AppUser", "AppUser")
+                        .WithMany("Ratings")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Advertisement");
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("App.Domain.Service", b =>
                 {
                     b.HasOne("App.Domain.Category", "Category")
@@ -552,6 +595,11 @@ namespace App.DAL.EF.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("App.Domain.Advertisement", b =>
+                {
+                    b.Navigation("Ratings");
+                });
+
             modelBuilder.Entity("App.Domain.Category", b =>
                 {
                     b.Navigation("Services");
@@ -560,6 +608,8 @@ namespace App.DAL.EF.Migrations
             modelBuilder.Entity("App.Domain.Identity.AppUser", b =>
                 {
                     b.Navigation("Advertisements");
+
+                    b.Navigation("Ratings");
 
                     b.Navigation("RefreshTokens");
                 });

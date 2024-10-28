@@ -6,7 +6,7 @@ public class AutoMapperProfile : Profile
 {
     public AutoMapperProfile()
     {
-        CreateMap<App.DAL.DTO.Contest, App.BLL.DTO.Contest>().ReverseMap();
+        CreateMap<App.Domain.Rating, App.BLL.DTO.Rating>().ReverseMap();
         CreateMap<App.Domain.Category, App.BLL.DTO.Category>().ReverseMap();
         CreateMap<App.Domain.PetCategory, App.BLL.DTO.PetCategory>().ReverseMap();
         CreateMap<App.Domain.ServicePetCategory, App.BLL.DTO.ServicePetCategory>()

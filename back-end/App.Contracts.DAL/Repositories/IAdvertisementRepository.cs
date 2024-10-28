@@ -9,5 +9,5 @@ public interface IAdvertisementRepository: IEntityRepository<App.Domain.Advertis
 }
 public interface IAdvertisementRepositoryCustom<TEntity>
 {
-    // Task<IEnumerable<TEntity>> GetAllAsync1(Guid userId = default, bool noTracking = true);
+    
 }

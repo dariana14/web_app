@@ -1,4 +1,3 @@
-using System.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
@@ -144,6 +143,7 @@ public class AccountController : ControllerBase
         {
             Jwt = jwt,
             RefreshToken = refreshToken.RefreshToken,
+            UserId = appUser.Id.ToString()
         };
         return Ok(res);
     }
@@ -226,7 +226,8 @@ public class AccountController : ControllerBase
         var responseData = new JWTResponse()
         {
             Jwt = jwt,
-            RefreshToken = refreshToken.RefreshToken
+            RefreshToken = refreshToken.RefreshToken,
+            UserId = appUser.Id.ToString()
         };
 
         return Ok(responseData);
@@ -374,6 +375,7 @@ public class AccountController : ControllerBase
         {
             Jwt = jwtResponseStr,
             RefreshToken = refreshToken.RefreshToken,
+            UserId = appUser.Id.ToString()
         };
 
         return Ok(res);

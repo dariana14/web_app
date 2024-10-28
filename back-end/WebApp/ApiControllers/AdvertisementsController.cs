@@ -176,6 +176,7 @@ namespace WebApp.ApiControllers
                 return NotFound();
             }
 
+            await _bll.Ratings.RemoveByAdvertisementIdAsync(advertisement.Id);
             await _bll.Advertisements.RemoveAsync(advertisement);
             await _bll.SaveChangesAsync();
 

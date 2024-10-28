@@ -24,4 +24,6 @@ public class Advertisement: BaseEntityId, IDomainAppUser<AppUser>
     public Guid StatusId { get; set; }
     public Status? Status { get; set; }
     
+    public ICollection<Rating>? Ratings { get; set; }
+    
 }

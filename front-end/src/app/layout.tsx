@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.css';
+import '@coreui/coreui-pro/dist/css/coreui.min.css'
 import "./site.css";
 import BootstrapActivation from "@/components/BootstrapActivation";
 import Header from "@/components/nav/Header";

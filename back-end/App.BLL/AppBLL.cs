@@ -3,11 +3,8 @@ using App.Contracts.BLL;
 using App.Contracts.BLL.Services;
 using App.Contracts.DAL;
 using App.DAL.EF;
-using App.Domain.Identity;
 using AutoMapper;
 using Base.BLL;
-using Base.Contracts.DAL;
-using Base.DAL.EF;
 
 namespace App.BLL;
 
@@ -24,6 +21,9 @@ public class AppBLL: BaseBLL<AppDbContext>, IAppBLL
     
     private ILocationService? _locations;
     public ILocationService Locations => _locations ?? new LocationService(_uow, _uow.Locations, _mapper);
+    
+    private IRatingService? _ratings;
+    public IRatingService Ratings => _ratings ?? new RatingService(_uow, _uow.Ratings, _mapper);
     
     private IAdvertisementService? _advertisements;
     public IAdvertisementService Advertisements => _advertisements ?? new AdvertisementService(_uow, _uow.Advertisements, _mapper);

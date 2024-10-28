@@ -11,7 +11,7 @@ public class AppDbContext : IdentityDbContext<AppUser, AppRole, Guid, IdentityUs
 
 {
     public DbSet<Advertisement> Advertisements { get; set; } = default!;
-    
+    public DbSet<Rating> Ratings { get; set; } = default!;
     public DbSet<Category> Categories { get; set; } = default!;
     
     public DbSet<Location> Locations { get; set; } = default!;

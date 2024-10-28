@@ -1,21 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using App.Contracts.BLL;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using App.DAL.EF;
-using App.Domain;
-using App.Domain.Identity;
 using Asp.Versioning;
 using AutoMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using WebApp.Helpers;
-using Advertisement = App.DTO.v1_0.Advertisement;
 
 namespace WebApp.ApiControllers
 {
