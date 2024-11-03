@@ -81,7 +81,7 @@ export default function CreateAdvertisement() {
                 }
             }
         );
-    }, []);
+    }, [userInfo]);
 
     const onSubmit = async () => {
 

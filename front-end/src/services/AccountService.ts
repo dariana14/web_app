@@ -35,23 +35,29 @@ export default class AccountService {
     }
 
     async refreshToken(data: IJWTResponse): Promise<IJWTResponse | undefined> {
-        console.log("data:" + data.refreshToken);
-        
-        try {
-            const response = await AccountService.httpClient.post<IJWTResponse>(
-                'refreshtoken', 
-                data
-            );
+        console.log("Refreshing token with:", data.refreshToken);
 
-            console.log('refresh token response', response);
-            if (response.status === 200) {
-                return response.data;
-            }
-            return undefined;
-        } catch (e) {
-            console.log('error: ', (e as Error).message);
+    try {
+        const response = await AccountService.httpClient.post<IJWTResponse>(
+            'refreshTokenData', 
+            data
+        );
+
+        if (response.status === 200 && response.data) {
+            console.log('Successfully refreshed token:', response.data);
+            return response.data;
+        } else {
+            console.warn('Unexpected response status:', response.status);
             return undefined;
         }
+    } catch (e) {
+        if (axios.isAxiosError(e)) {
+            console.error('Axios error response:', e.response?.data || e.message);
+        } else {
+            console.error('Unexpected error:', (e as Error).message);
+        }
+        return undefined;
+    }
     }
 
     static async register(data: IRegisterData): Promise<IResultObject<IJWTResponse>> {
